@@ -20,7 +20,17 @@ import {I18nModule} from './shared-modules/i18n/i18n.module';
     BrowserModule,
     IonicModule.forRoot(),
     AppRoutingModule,
-    StoreModule.forRoot(appReducers, {metaReducers: appMetaReducers}),
+    StoreModule.forRoot(appReducers, {
+      metaReducers: appMetaReducers,
+      runtimeChecks: {
+        strictStateImmutability: true,
+        strictActionImmutability: true,
+        strictStateSerializability: true,
+        strictActionSerializability: true,
+        strictActionWithinNgZone: true,
+        strictActionTypeUniqueness: true,
+      },
+    }),
     !environment.production ? StoreDevtoolsModule.instrument({maxAge: 25, logOnly: environment.production}) : [],
     EffectsModule.forRoot([]),
     I18nModule,

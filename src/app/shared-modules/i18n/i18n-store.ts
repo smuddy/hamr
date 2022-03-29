@@ -1,18 +1,10 @@
 import {createFeature, createReducer} from '@ngrx/store';
-import {LanguageResource} from './language-resource';
+import {LanguageResource} from '../../../locale/language-resource';
 import {language as de} from '../../../locale/de';
 import {language as en} from '../../../locale/en';
 import {flatResource} from './i18n.helpers';
 
-
-// import * as BookListPageActions from './book-list-page.actions';
-// import * as BooksApiActions from './books-api.actions';
-
 export type FlatResource = ({ [resourceKey: string]: string });
-
-interface AppState {
-  i18n: I18nState;
-}
 
 interface I18nState {
   translations: ({ [lngCode: string]: LanguageResource });

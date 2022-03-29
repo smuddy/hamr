@@ -1,0 +1,27 @@
+<ion-grid>
+  <ion-row>
+    <ion-col>
+      <ion-item>
+        <ion-label [resource]="labelCallSign" position="floating"></ion-label>
+        <ion-input (ionBlur)="callSignChanged($event)"
+                   (ngModelChange)="callSignChangedLive($event)"
+                   [ngModel]="callSign$|async"></ion-input>
+      </ion-item>
+    </ion-col>
+    <ion-col>
+      <ion-item *ngIf="(callSignInfo$|async) as callSignInfo">
+        <ion-avatar slot="start">
+          <span class="flag">{{callSignInfo.country.flag}}</span>
+        </ion-avatar>
+        <ion-label>
+          <h2>{{callSignInfo.country.iso}} - {{callSignInfo.country.name}}</h2>
+          <h3>{{callSignInfo.country.sub}}</h3>
+        </ion-label>
+      </ion-item>
+
+    </ion-col>
+
+  </ion-row>
+</ion-grid>
+
+

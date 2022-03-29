@@ -1,4 +1,4 @@
-import {LanguageResource} from './language-resource';
+import {LanguageResource} from '../../../locale/language-resource';
 import {FlatResource} from './i18n-store';
 
 export const flatResource = (input: LanguageResource): { [key: string]: string } => {

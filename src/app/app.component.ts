@@ -1,5 +1,6 @@
 import {Component} from '@angular/core';
-import {ResourceSelector} from './shared-modules/i18n/translate.directive';
+import {ResourceSelector} from './shared-modules/i18n/text-resource.directive';
+import {TextResourceService} from './shared-modules/i18n/text-resource.service';
 
 @Component({
   selector: 'app-root',
@@ -8,16 +9,10 @@ import {ResourceSelector} from './shared-modules/i18n/translate.directive';
 })
 export class AppComponent {
   public appPages = [
-    {title: 'Inbox', url: '/folder/Inbox', icon: 'mail'},
-    {title: 'Outbox', url: '/folder/Outbox', icon: 'paper-plane'},
-    {title: 'Favorites', url: '/folder/Favorites', icon: 'heart'},
-    {title: 'Archived', url: '/folder/Archived', icon: 'archive'},
-    {title: 'Trash', url: '/folder/Trash', icon: 'trash'},
-    {title: 'Spam', url: '/folder/Spam', icon: 'warning'},
+    {title: this.textResourceService.translate$(_ => _.pages.newQso.titleMenu), url: '/new-qso', icon: 'enter'},
   ];
-  public labels = ['Family', 'Friends', 'Notes', 'Work', 'Travel', 'Reminders'];
 
-  constructor() {
+  constructor(private textResourceService: TextResourceService) {
   }
 
   appName: ResourceSelector = _ => _.header.appName;
